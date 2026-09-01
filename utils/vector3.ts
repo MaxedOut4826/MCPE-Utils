@@ -37,7 +37,7 @@ export class Vector3Utils {
         };
     }
 
-    static hadamard_product(vector1: Vector3, vector2: Vector3): Vector3 {
+    static hadamardProduct(vector1: Vector3, vector2: Vector3): Vector3 {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
 
@@ -64,7 +64,7 @@ export class Vector3Utils {
         return x * y * z;
     }
 
-    static distance_sqr(vector1: Vector3, vector2: Vector3): number {
+    static distanceSqr(vector1: Vector3, vector2: Vector3): number {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
 
@@ -101,7 +101,7 @@ export class Vector3Utils {
         };
     }
 
-    static get_lowest_vector(vector1: Vector3, vector2: Vector3): Vector3 {
+    static getLowestVector(vector1: Vector3, vector2: Vector3): Vector3 {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
 
@@ -112,7 +112,7 @@ export class Vector3Utils {
         };
     }
 
-    static get_highest_vector(vector1: Vector3, vector2: Vector3): Vector3 {
+    static getHighestVector(vector1: Vector3, vector2: Vector3): Vector3 {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
 
@@ -123,7 +123,7 @@ export class Vector3Utils {
         };
     }
 
-    static to_string(vector: Vector3): string {
+    static toString(vector: Vector3): string {
         const { x, y, z } = vector;
 
         return `${x}, ${y}, ${z}`;

@@ -33,7 +33,7 @@ export class Vector2Utils {
         };
     }
 
-    static hadamard_product(vector1: Vector2, vector2: Vector2): Vector2 {
+    static hadamardProduct(vector1: Vector2, vector2: Vector2): Vector2 {
         const { x: x0, y: y0 } = vector1;
         const { x: x1, y: y1 } = vector2;
 
@@ -58,7 +58,7 @@ export class Vector2Utils {
         return x * y;
     }
 
-    static distance_sqr(vector1: Vector2, vector2: Vector2): number {
+    static distanceSqr(vector1: Vector2, vector2: Vector2): number {
         const { x: x0, y: y0 } = vector1;
         const { x: x1, y: y1 } = vector2;
 
@@ -91,7 +91,7 @@ export class Vector2Utils {
         };
     }
 
-    static get_lowest_vector(vector1: Vector2, vector2: Vector2): Vector2 {
+    static getLowestVector(vector1: Vector2, vector2: Vector2): Vector2 {
         const { x: x0, y: y0 } = vector1;
         const { x: x1, y: y1 } = vector2;
 
@@ -101,7 +101,7 @@ export class Vector2Utils {
         };
     }
 
-    static get_highest_vector(vector1: Vector2, vector2: Vector2): Vector2 {
+    static getHighestVector(vector1: Vector2, vector2: Vector2): Vector2 {
         const { x: x0, y: y0 } = vector1;
         const { x: x1, y: y1 } = vector2;
 
@@ -111,7 +111,7 @@ export class Vector2Utils {
         };
     }
 
-    static to_string(vector: Vector2): string {
+    static toString(vector: Vector2): string {
         const { x, y } = vector;
 
         return `${x}, ${y}`;
