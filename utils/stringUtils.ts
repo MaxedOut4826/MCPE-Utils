@@ -31,6 +31,13 @@ export class stringUtils {
     }
 
     /**
+     * Returns a boolean indicating if the provided character of a string is a valid hexadecimal character; a lower-case letter between a-f.
+     */
+    static charIsHexDigit(char: string): boolean {
+        return /^[a-f]$/.test(char);
+    }
+
+    /**
      * Returns a boolean indicating if the provided string includes any keyword from a list of keywords.
      */
     static isAnySubstringInString(string: string, keywords: string[]): boolean {
