@@ -1,10 +1,21 @@
+/**
+ * This is for external use rather than use within the MCPE Script API.
+ *
+ * In Script API, you should use the Vector3 type provided by "@minecraft/server".
+ */
 export type Vector3 = {
     x: number;
     y: number;
     z: number;
 };
 
+/**
+ * Used to perform calculations & operations on 3 dimensional points.
+ */
 export class Vector3Utils {
+    /**
+     * Returns the sum of the two vectors.
+     */
     static add(vector1: Vector3, vector2: Vector3): Vector3 {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
@@ -16,6 +27,9 @@ export class Vector3Utils {
         };
     }
 
+    /**
+     * Returns the difference between the two vectors.
+     */
     static subtract(vector1: Vector3, vector2: Vector3): Vector3 {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
@@ -27,6 +41,9 @@ export class Vector3Utils {
         };
     }
 
+    /**
+     * Returns a vector where each axis has been multipled by the scalar.
+     */
     static multiply(vector: Vector3, scalar: number): Vector3 {
         const { x, y, z } = vector;
 
@@ -37,6 +54,9 @@ export class Vector3Utils {
         };
     }
 
+    /**
+     * Returns a vector where each axis of vector1 has been multiplied by its vector2 counterpart.
+     */
     static hadamardProduct(vector1: Vector3, vector2: Vector3): Vector3 {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
@@ -48,6 +68,9 @@ export class Vector3Utils {
         };
     }
 
+    /**
+     * Returns a vector where each axis has been divided by the scalar.
+     */
     static normalise(vector: Vector3, scalar: number): Vector3 {
         const { x: x0, y: y0, z: z0 } = vector;
 
@@ -58,12 +81,20 @@ export class Vector3Utils {
         };
     }
 
+    /**
+     * Returns the total volume of a vector calculated as x * y * z.
+     */
     static volumeOf(vector: Vector3): number {
         const { x, y, z } = vector;
 
         return x * y * z;
     }
 
+    /**
+     * Returns the distance squared between two vectors.
+     *
+     * This can be used in substitute to the 'distance' method for performance, as it avoids the square-root call.
+     */
     static distanceSqr(vector1: Vector3, vector2: Vector3): number {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
@@ -75,6 +106,9 @@ export class Vector3Utils {
         return dx * dx + dy * dy + dz * dz;
     }
 
+    /**
+     * Returns the distance between two vectors.
+     */
     static distance(vector1: Vector3, vector2: Vector3): number {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
@@ -86,6 +120,9 @@ export class Vector3Utils {
         return Math.sqrt(dx * dx + dy * dy + dz * dz);
     }
 
+    /**
+     * Returns the point between two vectors at the iteration parameter 't'.
+     */
     static lerp(vector1: Vector3, vector2: Vector3, t: number): Vector3 {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
@@ -101,6 +138,9 @@ export class Vector3Utils {
         };
     }
 
+    /**
+     * Returns the lowest of two vectors.
+     */
     static getLowestVector(vector1: Vector3, vector2: Vector3): Vector3 {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
@@ -112,6 +152,9 @@ export class Vector3Utils {
         };
     }
 
+    /**
+     * Returns the highest of two vectors.
+     */
     static getHighestVector(vector1: Vector3, vector2: Vector3): Vector3 {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
@@ -123,12 +166,20 @@ export class Vector3Utils {
         };
     }
 
+    /**
+     * Returns the vector converted to a string.
+     *
+     * Example: '1, 2, 3'.
+     */
     static toString(vector: Vector3): string {
         const { x, y, z } = vector;
 
         return `${x}, ${y}, ${z}`;
     }
 
+    /**
+     * Returns the vector rounded to the nearest value at the provided point of precision.
+     */
     static round(vector: Vector3, precision: number): Vector3 {
         const { x, y, z } = vector;
 
