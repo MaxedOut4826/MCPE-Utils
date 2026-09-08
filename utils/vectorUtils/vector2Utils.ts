@@ -256,4 +256,24 @@ export class Vector2Utils {
             y: y / magnitude,
         };
     }
+
+    /**
+     * Returns the point between p0 & p2 using p1 as the control for the arch of the bezier curve.
+     */
+    static bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: number): Vector2 {
+        const { x: x0, y: y0 } = p0;
+        const { x: x1, y: y1 } = p1;
+        const { x: x2, y: y2 } = p2;
+
+        const intermediateX0 = (x1 - x0) * t + x0;
+        const intermediateY0 = (y1 - y0) * t + y0;
+
+        const intermediateX1 = (x2 - x1) * t + x1;
+        const intermediateY1 = (y2 - y1) * t + y1;
+
+        return {
+            x: (intermediateX1 - intermediateX0) * t + intermediateX0,
+            y: (intermediateY1 - intermediateY0) * t + intermediateY0,
+        };
+    }
 }
