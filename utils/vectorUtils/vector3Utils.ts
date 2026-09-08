@@ -1,5 +1,3 @@
-import { Vector2Utils } from "./vector2Utils.js";
-
 /**
  * This is for external use rather than use within the MCPE Script API.
  *
