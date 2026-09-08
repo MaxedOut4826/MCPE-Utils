@@ -51,22 +51,9 @@ export class Vector2Utils {
     }
 
     /**
-     * Returns a vector where each axis of vector1 has been multiplied by its vector2 counterpart.
-     */
-    static hadamardProduct(vector1: Vector2, vector2: Vector2): Vector2 {
-        const { x: x0, y: y0 } = vector1;
-        const { x: x1, y: y1 } = vector2;
-
-        return {
-            x: x0 * x1,
-            y: y0 * y1,
-        };
-    }
-
-    /**
      * Returns a vector where each axis has been divided by the scalar.
      */
-    static normalise(vector: Vector2, scalar: number): Vector2 {
+    static divide(vector: Vector2, scalar: number): Vector2 {
         const { x: x0, y: y0 } = vector;
 
         return {
@@ -166,9 +153,9 @@ export class Vector2Utils {
     }
 
     /**
-     * Returns the vector rounded to the nearest value at the provided point of precision.
+     * Returns the vector truncated to the nearest value at the provided point of precision.
      */
-    static round(vector: Vector2, precision: number): Vector2 {
+    static toFixed(vector: Vector2, precision: number): Vector2 {
         const { x, y } = vector;
 
         return {
@@ -178,12 +165,95 @@ export class Vector2Utils {
     }
 
     /**
-     * Returns the dot product of the two vectors
+     * Returns the vector where all axes have their fractional points removed, converting them to integers.
+     */
+    static truncate(vector: Vector2): Vector2 {
+        const { x, y } = vector;
+
+        return {
+            x: Math.trunc(x),
+            y: Math.trunc(y),
+        };
+    }
+
+    /**
+     * Returns the vector where all axes values have been rounded to the nearest integer.
+     */
+    static round(vector: Vector2): Vector2 {
+        const { x, y } = vector;
+        return {
+            x: Math.round(x),
+            y: Math.round(y),
+        };
+    }
+
+    /**
+     * Returns the vector where all axes values have been rounded down to the nearest integer.
+     */
+    static floor(vector: Vector2): Vector2 {
+        const { x, y } = vector;
+        return {
+            x: Math.floor(x),
+            y: Math.floor(y),
+        };
+    }
+
+    /**
+     * Returns the vector where all axes values have been rounded up to the nearest integer.
+     */
+    static ceil(vector: Vector2): Vector2 {
+        const { x, y } = vector;
+        return {
+            x: Math.ceil(x),
+            y: Math.ceil(y),
+        };
+    }
+
+    /**
+     * Returns the perpindicular dot product of the two vectors; the magnitude of the 2D cross product.
+     *
+     * This is the relative orientation (clockwise or counter-clockwise) and the signed area of the parallelogram formed by the two vectors
+     */
+    static perpDotProduct(vector1: Vector2, vector2: Vector2): number {
+        const { x: x0, y: y0 } = vector1;
+        const { x: x1, y: y1 } = vector2;
+
+        return x0 * y1 - y0 * x1;
+    }
+
+    /**
+     * Returns the dot product of the two vectors; a scalar indicating how much two vectors face in the same direction.
      */
     static dotProduct(vector1: Vector2, vector2: Vector2): number {
         const { x: x0, y: y0 } = vector1;
         const { x: x1, y: y1 } = vector2;
 
         return x0 * x1 + y0 * y1;
+    }
+
+    /**
+     * Returns a vector where each axis of vector1 has been multiplied by its vector2 counterpart.
+     */
+    static hadamardProduct(vector1: Vector2, vector2: Vector2): Vector2 {
+        const { x: x0, y: y0 } = vector1;
+        const { x: x1, y: y1 } = vector2;
+
+        return {
+            x: x0 * x1,
+            y: y0 * y1,
+        };
+    }
+
+    /**
+     * Returns the vector normalised to be have a length of exactly one while preserving direction.
+     */
+    static normalise(vector: Vector2): Vector2 {
+        const { x: x, y: y } = vector;
+        const magnitude = Math.sqrt(x * x + y * y);
+
+        return {
+            x: x / magnitude,
+            y: y / magnitude,
+        };
     }
 }

@@ -73,7 +73,7 @@ export class Vector3Utils {
     /**
      * Returns a vector where each axis has been divided by the scalar.
      */
-    static normalise(vector: Vector3, scalar: number): Vector3 {
+    static divide(vector: Vector3, scalar: number): Vector3 {
         const { x: x0, y: y0, z: z0 } = vector;
 
         return {
@@ -180,9 +180,9 @@ export class Vector3Utils {
     }
 
     /**
-     * Returns the vector rounded to the nearest value at the provided point of precision.
+     * Returns the vector truncated to the nearest value at the provided point of precision.
      */
-    static round(vector: Vector3, precision: number): Vector3 {
+    static toFixed(vector: Vector3, precision: number): Vector3 {
         const { x, y, z } = vector;
 
         return {
@@ -193,12 +193,89 @@ export class Vector3Utils {
     }
 
     /**
-     * Returns the dot product of the two vectors
+     * Returns the vector where all axes have their fractional points removed, converting them to integers.
+     */
+    static truncate(vector: Vector3): Vector3 {
+        const { x, y, z } = vector;
+
+        return {
+            x: Math.trunc(x),
+            y: Math.trunc(y),
+            z: Math.trunc(z),
+        };
+    }
+
+    /**
+     * Returns the vector where all axes values have been rounded to the nearest integer.
+     */
+    static round(vector: Vector3): Vector3 {
+        const { x, y, z } = vector;
+        return {
+            x: Math.round(x),
+            y: Math.round(y),
+            z: Math.round(z),
+        };
+    }
+
+    /**
+     * Returns the vector where all axes values have been rounded down to the nearest integer.
+     */
+    static floor(vector: Vector3): Vector3 {
+        const { x, y, z } = vector;
+        return {
+            x: Math.floor(x),
+            y: Math.floor(y),
+            z: Math.floor(z),
+        };
+    }
+
+    /**
+     * Returns the vector where all axes values have been rounded up to the nearest integer.
+     */
+    static ceil(vector: Vector3): Vector3 {
+        const { x, y, z } = vector;
+        return {
+            x: Math.ceil(x),
+            y: Math.ceil(y),
+            z: Math.ceil(z),
+        };
+    }
+
+    /**
+     * Returns the cross product of the two vectors; a new vector pointing completely out of the shared plane of two vectors.
+     */
+    static crossProduct(vector1: Vector3, vector2: Vector3): Vector3 {
+        const { x: x0, y: y0, z: z0 } = vector1;
+        const { x: x1, y: y1, z: z1 } = vector2;
+
+        return {
+            x: y0 * z1 - z0 * y1,
+            y: z0 * x1 - x0 * z1,
+            z: x0 * y1 - y0 * x1,
+        };
+    }
+
+    /**
+     * Returns the dot product of the two vectors; a scalar indicating how much two vectors face in the same direction.
      */
     static dotProduct(vector1: Vector3, vector2: Vector3): number {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
 
         return x0 * x1 + y0 * y1 + z0 * z1;
+    }
+
+    /**
+     * Returns the vector normalised to be have a length of exactly one while preserving direction.
+     */
+    static normalise(vector: Vector3): Vector3 {
+        const { x: x, y: y, z: z } = vector;
+        const magnitude = Math.sqrt(x * x + y * y + z * z);
+
+        return {
+            x: x / magnitude,
+            y: y / magnitude,
+            z: z / magnitude,
+        };
     }
 }
