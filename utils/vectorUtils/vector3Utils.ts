@@ -95,7 +95,7 @@ export class Vector3Utils {
      *
      * This can be used in substitute to the 'distance' method for performance, as it avoids the square-root call.
      */
-    static distanceSqr(vector1: Vector3, vector2: Vector3): number {
+    static distanceBetweenSqr(vector1: Vector3, vector2: Vector3): number {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
 
@@ -109,7 +109,7 @@ export class Vector3Utils {
     /**
      * Returns the distance between two vectors.
      */
-    static distance(vector1: Vector3, vector2: Vector3): number {
+    static distanceBetween(vector1: Vector3, vector2: Vector3): number {
         const { x: x0, y: y0, z: z0 } = vector1;
         const { x: x1, y: y1, z: z1 } = vector2;
 
