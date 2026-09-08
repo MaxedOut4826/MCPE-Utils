@@ -276,4 +276,24 @@ export class Vector2Utils {
             y: (intermediateY1 - intermediateY0) * t + intermediateY0,
         };
     }
+
+    /**
+     * Returns a new vector in front of the position based on the rotation & distance.
+     */
+    static getPositionInFront(
+        position: Vector2,
+        rotation: Vector2,
+        distance: number,
+    ): Vector2 {
+        const { x: rotX, y: rotY } = rotation;
+        const { x: posX, y: posY } = position;
+
+        const viewDirectionX = rotX * distance;
+        const viewDirectionY = rotY * distance;
+
+        return {
+            x: posX * viewDirectionX,
+            y: posY * viewDirectionY,
+        };
+    }
 }

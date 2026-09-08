@@ -299,4 +299,26 @@ export class Vector3Utils {
             z: (intermediateZ1 - intermediateZ0) * t + intermediateZ0,
         };
     }
+
+    /**
+     * Returns a new vector in front of the position based on the rotation & distance.
+     */
+    static getPositionInFront(
+        position: Vector3,
+        rotation: Vector3,
+        distance: number,
+    ): Vector3 {
+        const { x: rotX, y: rotY, z: rotZ } = rotation;
+        const { x: posX, y: posY, z: posZ } = position;
+
+        const viewDirectionX = rotX * distance;
+        const viewDirectionY = rotY * distance;
+        const viewDirectionZ = rotZ * distance;
+
+        return {
+            x: posX * viewDirectionX,
+            y: posY * viewDirectionY,
+            z: posZ * viewDirectionZ,
+        };
+    }
 }
