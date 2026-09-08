@@ -1,3 +1,5 @@
+import { Vector2Utils } from "./vector2Utils.js";
+
 /**
  * This is for external use rather than use within the MCPE Script API.
  *
@@ -188,5 +190,15 @@ export class Vector3Utils {
             y: parseFloat(y.toFixed(precision)),
             z: parseFloat(z.toFixed(precision)),
         };
+    }
+
+    /**
+     * Returns the dot product of the two vectors
+     */
+    static dotProduct(vector1: Vector3, vector2: Vector3): number {
+        const { x: x0, y: y0, z: z0 } = vector1;
+        const { x: x1, y: y1, z: z1 } = vector2;
+
+        return x0 * x1 + y0 * y1 + z0 * z1;
     }
 }

@@ -176,4 +176,14 @@ export class Vector2Utils {
             y: parseFloat(y.toFixed(precision)),
         };
     }
+
+    /**
+     * Returns the dot product of the two vectors
+     */
+    static dotProduct(vector1: Vector2, vector2: Vector2): number {
+        const { x: x0, y: y0 } = vector1;
+        const { x: x1, y: y1 } = vector2;
+
+        return x0 * x1 + y0 * y1;
+    }
 }
